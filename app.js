@@ -196,6 +196,11 @@ function resetAutoLogoffTimer() {
     if (typeof firebase !== 'undefined' && firebase.auth) {
       firebase.auth().signOut();
     }
+    // Clear username and password fields if present
+    var userField = document.getElementById('loginUsername');
+    var passField = document.getElementById('loginPassword');
+    if (userField) userField.value = '';
+    if (passField) passField.value = '';
     // Optionally, redirect to login or reload page
     // location.reload();
   }, 60000); // 1 minute = 60000 ms
